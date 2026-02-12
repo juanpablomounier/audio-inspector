@@ -1,0 +1,1 @@
+#This script loads a valid audio file.
