@@ -74,10 +74,3 @@ def get_audio_rms(audio_signal):
 
 
 
-if __name__ == "__main__":
-    audio_path = "C:/Users/juanp/Downloads/Audiocity.wav"
-    signal, sample_rate = load_audio(audio_path)
-    duration = get_audio_duration(signal, sample_rate)
-    print(f"Audio duration: {duration:.2f} seconds")
-    rms = get_audio_rms(signal)
-    print(f"Global RMS: {rms:.4f}")

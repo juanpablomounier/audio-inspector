@@ -9,10 +9,10 @@ import numpy as np
 
 def validate_signal(audio_signal):
     if not isinstance(audio_signal,np.ndarray):
-        raise ValueError("Audio signal must be an array.")
-    if len(audio_signal) <= 0:
-        raise ValueError("The audio signal is empty.") 
-    if np.all(np.isfinite(audio_signal)) == False:
+        raise ValueError("Audio signal must be a numpy array.")
+    if audio_signal.size == 0:
+        raise ValueError("Audio signal is empty.") 
+    if not np.all(np.isfinite(audio_signal)):
         raise ValueError("Audio signal contains non-finite values.")
     return True
 
