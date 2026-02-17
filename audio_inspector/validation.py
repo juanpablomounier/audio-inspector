@@ -11,4 +11,8 @@ def validate_signal(audio_signal):
     pass
 
 def validate_sample_rate(audio_sample_rate):
-    pass
+    if not isinstance(audio_sample_rate,(int,float)):
+        raise ValueError("Sample rate must be an int or float.")
+    if audio_sample_rate <= 8000:
+        raise ValueError("Sample rate must be greater than 8000 Hz.")
+    return True
