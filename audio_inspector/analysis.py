@@ -72,5 +72,19 @@ def get_audio_rms(audio_signal):
     global_rms = np.mean(rms)
     return global_rms
 
+def get_audio_rms_db(global_rms):
+    """
+    Docstring for get_audio_rms_db
+    
+    :param global_rms: 
+    
+    Description: Converts a linear RMS value (0–1) into decibels relative to full scale (dBFS).
+    Raises ValueError if RMS is non-positive.
+    """
 
+    if isinstance(global_rms,(int,float, np.floating)) and global_rms > 0:
+        rms_db = 20 * np.log10(global_rms)
+    else:
+        raise ValueError("Global RMS variable is not number type or is not above 0.")
+    return rms_db
 

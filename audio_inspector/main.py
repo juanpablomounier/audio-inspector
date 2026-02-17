@@ -4,7 +4,7 @@ This audio analyzer takes an audio file in wav/mp3 format and analyses several f
 
 from loader import load_audio
 from validation import validate_signal, validate_sample_rate
-from analysis import get_audio_duration, get_audio_rms
+from analysis import get_audio_duration, get_audio_rms, get_audio_rms_db
 
 audio_path = "C:/Users/juanp/Downloads/Audiocity.wav"
 
@@ -13,5 +13,6 @@ valid_signal = validate_signal(signal)
 valid_sample_rate = validate_sample_rate(sample_rate)
 audio_duration = get_audio_duration(signal, sample_rate)
 audio_rms = get_audio_rms(signal)
+audio_dbfs = get_audio_rms_db(audio_rms)
 
-print(f"For the file {audio_path} the duration is {audio_duration} and the RMS level is {audio_rms}\b")
+print(f"For the file {audio_path} the duration is {audio_duration}, the RMS level is {audio_rms} and the RMS in dB is {audio_dbfs}.\n")
