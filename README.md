@@ -1,16 +1,13 @@
-This is a audio inspector/analyzer. This is it's architecture:
+Audio Inspector is a modular audio analysis tool.
 
-audio-inspector/
-│
+Project architecture:
+
+audio_inspector/
 ├── audio_inspector/
 │   ├── __init__.py
-│   └── loader.py   
-│
+│   ├── loader.py        # Audio file loading and decoding
+│   ├── validation.py    # Input data validation
+│   ├── analysis.py      # Audio feature extraction
+├── main.py              # Execution entry point
 ├── README.md
-├── .gitignore
-└── main.py
-
-Next, a brief explanation of each script's module:
-
-loader.py:
-    It's a valid audio file loader. It has no other task that verify if the audio file is ok and load it.
+└── .gitignore
