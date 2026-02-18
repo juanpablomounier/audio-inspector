@@ -88,3 +88,12 @@ def get_audio_rms_db(global_rms):
         raise ValueError("Global RMS variable is not number type or is not above 0.")
     return rms_db
 
+
+def get_audio_peak(audio_signal):
+    """
+    Assuming a valid signal, it computes absolute amplitude peak in range [0,1]. Float value returned.
+    """
+    peak = np.max(np.abs(audio_signal))
+    return peak
+
+
