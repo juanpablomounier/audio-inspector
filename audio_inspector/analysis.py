@@ -73,12 +73,8 @@ def get_audio_rms(audio_signal):
     return global_rms
 
 def get_audio_rms_db(global_rms):
-    """
-    Docstring for get_audio_rms_db
-    
-    :param global_rms: 
-    
-    Description: Converts a linear RMS value (0–1) into decibels relative to full scale (dBFS).
+    """ 
+    Converts a linear RMS value (0–1) into decibels relative to full scale (dBFS).
     Raises ValueError if RMS is non-positive.
     """
 
@@ -96,4 +92,24 @@ def get_audio_peak(audio_signal):
     peak = np.max(np.abs(audio_signal))
     return peak
 
+def get_audio_crest_factor(peak, global_rms):
+    """
+    After basic validation, it computes Crest Factor dividing Peak by RMS. Float value returned.
+    """
+    if global_rms != 0 and peak > global_rms:
+        crest_factor = peak/global_rms
+    else:
+        raise ValueError("RMS must be above 0 and peak must be > RMS.")
+    return crest_factor
 
+def get_audio_cf_db(crest_factor):
+    """
+    Converts a linear Crest Factor value into decibels.
+    Raises ValueError if CF is non-positive.
+    """
+    if crest_factor > 0:
+        cf_db = 20 * np.log10(crest_factor)
+    else:
+        raise ValueError("Crest Factor must be above 0.")
+    
+    return cf_db
