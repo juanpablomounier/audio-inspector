@@ -2,7 +2,7 @@
 framing.py generates time windows by dividing an audio signal into several frames.
 """
 import numpy as np
-from validation import validate_sample_rate, validate_signal
+from core.validation import validate_sample_rate, validate_signal
 
 def frame_signal(audio_signal, sample_rate, window_size_ms=50, hop_size_ms=25):
     window_size_samples = int(sample_rate * window_size_ms / 1000)

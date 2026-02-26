@@ -8,7 +8,7 @@ b) global RMS value
 The RMS (Root Mean Square) is a measure of the signal's average power. It is computed by squaring all
 signal values, calculating their mean, and finally taking the square root of that mean.
 """
-from loader import load_audio
+from core.loader import load_audio
 import numpy as np
 import librosa
 
