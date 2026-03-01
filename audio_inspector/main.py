@@ -7,7 +7,9 @@ from core.validation import validate_signal, validate_sample_rate
 from core.analysis import get_audio_duration, get_audio_rms, get_audio_rms_db, get_audio_peak, get_audio_crest_factor, get_audio_cf_db
 from core.framing import frame_signal
 from features.energy import frame_energy, smooth_energy
-from visualization.plotting import plot_energy, plot_smooth_energy
+from features.temporal import temporal_novelty
+from visualization.plotting import plot_energy, plot_smooth_energy, plot_novelty
+
 
 audio_path = "C:/Users/juanp/Downloads/Audiocity.wav"
 
@@ -23,7 +25,7 @@ audio_cf_db = get_audio_cf_db(audio_crest_factor)
 frames, times = frame_signal(signal, sample_rate)
 energy = frame_energy(frames)
 smoothed_energy = smooth_energy(energy)
-
+novelty = temporal_novelty(smoothed_energy)
 
 print(f"""For the file {audio_path} 
     the duration is {audio_duration},
@@ -32,10 +34,12 @@ print(f"""For the file {audio_path}
     the linear crest factor is {audio_crest_factor}
     and the CF in dB is {audio_cf_db}.
     Energy shape is {energy}.
-    Smoothed energy is {smoothed_energy}\n""")
+    Smoothed energy is {smoothed_energy}.
+    Novelty is {novelty}\n""")
 
 plot_energy(times, energy)
 plot_smooth_energy(times, smoothed_energy)
+plot_novelty(times, novelty)
 
 print(frames.shape)
 print(times[0], times[-1])

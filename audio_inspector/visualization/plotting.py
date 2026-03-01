@@ -75,3 +75,38 @@ def plot_smooth_energy(times, smoothed_energy):
 
     plt.tight_layout()
     plt.show()
+
+def plot_novelty(times, novelty):
+    """
+    Plots novelty over time.
+
+    Parameters
+    ----------
+    times : np.ndarray
+        Time positions of frames (seconds).
+
+    novelty : np.ndarray
+        Energy value per frame.
+    """
+
+    # --- basic validation ---
+    if not isinstance(times, np.ndarray):
+        raise ValueError("times must be a numpy array.")
+
+    if not isinstance(novelty, np.ndarray):
+        raise ValueError("energy must be a numpy array.")
+
+    if len(times) != len(novelty):
+        raise ValueError("times and novelty must have same length.")
+
+    # --- plotting ---
+    plt.figure(figsize=(10, 4))
+
+    plt.plot(times, novelty)
+
+    plt.title("Novelty Over Time")
+    plt.xlabel("Time (seconds)")
+    plt.ylabel("Novelty")
+
+    plt.tight_layout()
+    plt.show()
