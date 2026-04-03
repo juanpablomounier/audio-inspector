@@ -22,9 +22,9 @@ Juan Pablo Mounier
 """
 from __future__ import annotations
 import argparse
-from core.loader import load_audio
-from core.validation import validate_signal, validate_sample_rate
-from core.analysis import (
+from audio_inspector.core.loader import load_audio
+from audio_inspector.core.validation import validate_signal, validate_sample_rate
+from audio_inspector.core.analysis import (
     get_audio_duration,
     get_audio_rms,
     get_audio_rms_db,
@@ -33,12 +33,12 @@ from core.analysis import (
     get_audio_cf_db
 )
 
-from core.framing import frame_signal
+from audio_inspector.core.framing import frame_signal
 
-from features.energy import frame_energy, smooth_energy
-from features.temporal import temporal_novelty, normalize_novelty
+from audio_inspector.features.energy import frame_energy, smooth_energy
+from audio_inspector.features.temporal import temporal_novelty, normalize_novelty
 
-from visualization.plotting import (
+from audio_inspector.visualization.plotting import (
     plot_energy,
     plot_smooth_energy,
     plot_novelty
