@@ -1,6 +1,13 @@
 __pycache__/
-.venv/
+
+*.pyc
+
 .env
-*.wav
-*.mp3
-*.flac
+
+venv/
+
+.idea/
+
+.vscode/
+
+.DS_Store
